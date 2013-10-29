@@ -4,6 +4,7 @@ var canvas = document.getElementById("star-canvas"),
     height = window.innerHeight,
     PLUS = 187,
     MINUS = 189,
+    STOP = 80,
     eraseColor = "#999",
     textNode = document.getElementById("text");
 (function(arr){
@@ -111,6 +112,7 @@ ctx.fillRect(0,0, width, height);
 var stars = [];
 
 document.addEventListener('keydown', function(e){
+    console.log("e code", e.keyCode);
     switch(e.keyCode){
         case PLUS:
             for(var i = 0; i++; i < 5){
@@ -123,6 +125,9 @@ document.addEventListener('keydown', function(e){
             }
             stars.splice(0,5);
             break;
+        case 32:
+            if(game.abort) delete game.abort;
+            else game.abort = true;
     }
 });
 
@@ -148,9 +153,11 @@ document.addEventListener('mouseup', function(e){
 });
 
 function animate(){
+    if(!game.abort){
     stars.forEach(function(star){
         star.move();
     });
+    }
     requestAnimationFrame(animate);
 }
 for(var i = 0; i < 150; i++){
