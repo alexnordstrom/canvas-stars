@@ -1,0 +1,19 @@
+#star-canvas {
+    z-index: 1;
+    position: absolute;
+}
+#text {
+    z-index: 2;
+    text-align: center;
+    top:40%;
+    left:20%;
+    right:20%;
+    font-family: 'Helvetica Neue Light', Helvetica, Arial;
+    font-size: 40px;
+    position:absolute;
+    -webkit-transition:opacity 5s ease-out;
+}
+.fadeOut {
+    opacity:0;
+}
+
