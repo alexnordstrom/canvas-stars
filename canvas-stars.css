@@ -15,6 +15,8 @@
     -webkit-transition:opacity 10s ease-out;
     -moz-transition:opacity 10s ease-out;
     transition:opacity 3s ease-out 7s;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 .fadeOut {
     opacity:0;
