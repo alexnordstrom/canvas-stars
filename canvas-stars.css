@@ -8,10 +8,13 @@
     top:40%;
     left:20%;
     right:20%;
+    color:#fff;
     font-family: 'Helvetica Neue Light', Helvetica, Arial;
     font-size: 40px;
     position:absolute;
-    -webkit-transition:opacity 5s ease-out;
+    -webkit-transition:opacity 10s ease-out;
+    -moz-transition:opacity 10s ease-out;
+    transition:opacity 3s ease-out 7s;
 }
 .fadeOut {
     opacity:0;

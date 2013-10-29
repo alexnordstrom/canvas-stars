@@ -15,11 +15,18 @@ var canvas = document.getElementById("star-canvas"),
     });
 })([canvas]);
 
+function bind(what, events, fn){
+    var bindFn = function(evt){
+        what.addEventListener(evt, fn);
+    };
+    events.forEach(bindFn);
+}
+
 function Star() {
     this.angle = Math.floor(Math.random() * 360);
 }
 textNode.className = "fadeOut";
-textNode.addEventListener('webkitTransitionEnd', function(e){
+bind(textNode, ['webkitTransitionEnd', 'transitionend'], function(e){
     textNode.parentNode.removeChild(textNode);
 });
 
@@ -104,20 +111,24 @@ ctx.fillRect(0,0, width, height);
 var stars = [];
 
 document.addEventListener('keydown', function(e){
-    console.log("got keydown", e.keyCode, PLUS, MINUS);
     switch(e.keyCode){
         case PLUS:
-            stars.push(new Star());
+            for(var i = 0; i++; i < 5){
+                stars.push(new Star());
+            }
             break;
         case MINUS:
-            stars.splice(0,1);
+            for(var i = 0; i < 5; i++){
+                stars[i].erase();
+            }
+            stars.splice(0,5);
             break;
     }
 });
 
 document.addEventListener('mousemove', function(e){
-    game.midX = e.x;
-    game.midY = e.y;
+    game.midX = e.clientX;
+    game.midY = e.clientY;
 });
 
 document.addEventListener('mousedown', function(e){
